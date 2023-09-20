@@ -15,6 +15,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
@@ -40,7 +41,7 @@ class ProductResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('amount'),
-                TextColumn::make('price')->money('BRL'),
+                TextColumn::make('price'),
                 TextColumn::make('created_at')->date('d/m/Y H:i:s')
             ])
             ->filters([
