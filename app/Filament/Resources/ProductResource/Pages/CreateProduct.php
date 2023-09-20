@@ -12,7 +12,7 @@ class CreateProduct extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['price'] = (str_replace(['.', ','], ['', '.'], $data['price'])) * 100;
+        $data['price'] = ((float)str_replace(['.', ','], ['', '.'], $data['price'])) * 100;
         return $data;
     }
 
