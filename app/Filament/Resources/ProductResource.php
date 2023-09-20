@@ -14,6 +14,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 
 class ProductResource extends Resource
@@ -26,11 +27,18 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->label('Nome Produto'),
+                TextInput::make('name')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, $set) {
+                        $state = Str::slug($state);
+
+                        $set('slug', $state);
+                    })
+                    ->label('Nome Produto'),
                 TextInput::make('description')->label('Descrição'),
                 TextInput::make('price')->label('Preço'),
                 TextInput::make('amount')->label('Quantidade'),
-                TextInput::make('slug')
+                TextInput::make('slug')->readOnly()
 
             ]);
     }
