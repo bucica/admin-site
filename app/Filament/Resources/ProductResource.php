@@ -41,7 +41,7 @@ class ProductResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('amount'),
-                TextColumn::make('price'),
+                TextColumn::make('price')->money('BRL'),
                 TextColumn::make('created_at')->date('d/m/Y H:i:s')
             ])
             ->filters([
