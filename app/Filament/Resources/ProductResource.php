@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 
+
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
